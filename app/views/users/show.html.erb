@@ -1,0 +1,10 @@
+First name: <%= @user.fname %> <br>
+Last Name: <%= @user.lname %> <br>
+Birthdate: <%= @user.birthdate %> <br>
+Email: <%= @user.email %> <br>
+Mobile: <%= @user.mobile %> <br>
+Avatar: <%= image_tag @user.avatar.url, size: "100" %> <br>
+
+<% if user_signed_in? && (current_user == @user || current_user.admin?) %>
+  <%= link_to "Edit", edit_user_path(@user.id) %>
+<% end %>

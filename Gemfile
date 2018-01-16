@@ -17,6 +17,7 @@ gem "jquery-rails"
 gem "mail", ">= 2.6.3"
 gem "marco-polo"
 gem "pg", "~> 0.18"
+gem "devise"
 gem "pgcli-rails"
 gem "rails", "5.1.4"
 gem "sass-rails", "~> 5.0"
@@ -24,6 +25,8 @@ gem "secure_headers", "~> 3.0"
 gem "sidekiq", ">= 4.2.0"
 gem "turbolinks", "~> 5"
 gem 'devise'
+gem 'carrierwave', '~> 1.0'
+gem 'foundation-rails'
 
 group :production, :staging do
   gem "postmark-rails"

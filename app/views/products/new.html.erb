@@ -1,0 +1,13 @@
+<%= form_for @product do |f| %>
+  <%= render 'shared/products_error_messages' %>
+  Name: <%= f.text_field :name %>
+  Description: <%= f.text_area  :description %>
+  Price: <%= f.text_field :price %>
+  Category: <%= f.select :category_id do %>
+    <% @categories&.each do |category| -%>
+      <%= content_tag(:option, category.name, value: category.id) %>
+    <% end %>
+  <% end %>
+  Image: <%= f.file_field :image %>
+  <%= f.submit "Submit" %>
+<% end %>
