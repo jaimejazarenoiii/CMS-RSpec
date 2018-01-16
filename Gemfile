@@ -25,6 +25,8 @@ gem "secure_headers", "~> 3.0"
 gem "sidekiq", ">= 4.2.0"
 gem "turbolinks", "~> 5"
 gem 'devise'
+gem 'carrierwave', '~> 1.0'
+gem 'foundation-rails'
 
 group :production, :staging do
   gem "postmark-rails"
