@@ -23,6 +23,7 @@ Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 Metrics/AbcSize:
+  Enabled: false
   Exclude:
     - "test/**/*"
 
@@ -69,6 +70,7 @@ Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
   Exclude:
     - "app/controllers/application_controller.rb"
     - "app/helpers/**/*_helper.rb"
@@ -88,12 +90,14 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/HashSyntax:
+  Enabled: false
   EnforcedStyle: hash_rockets
 
 Style/NumericPredicate:
   Enabled: false
 
 Style/StringLiterals:
+  Enabled: false
   EnforcedStyle: double_quotes
 
 Style/TrivialAccessors:
