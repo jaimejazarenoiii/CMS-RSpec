@@ -100,5 +100,8 @@ Style/StringLiterals:
   Enabled: false
   EnforcedStyle: double_quotes
 
+Style/GuardClause:
+  Enabled: false
+
 Style/TrivialAccessors:
   AllowPredicates: true

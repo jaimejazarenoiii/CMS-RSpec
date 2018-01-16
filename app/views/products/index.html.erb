@@ -1,0 +1,24 @@
+<%= link_to "+ New Product", new_product_path if user_signed_in? %>
+<table width="100%">
+  <thead>
+    <th>Seller</th>
+    <th>ProductName</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Image</th>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to "#{product.user.fname} #{product.user.lname}",
+                product_path(product.id) %></td>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td><%= product.category.name %></td>
+        <td><%= image_tag product.image.url, size: "100" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

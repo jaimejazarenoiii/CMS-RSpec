@@ -1,0 +1,12 @@
+Seller: <%= @product.user.fname %> - <%= @product.user.lname %><br>
+Name: <%= @product.name %><br>
+Description: <%= @product.description %> <br>
+Price: <%= @product.price %> <br>
+Category: <%= @product.category.name %><br>
+Image: <%= image_tag @product.image.url, size: "100" %>
+<br>
+
+<% if user_signed_in? && (current_user == @product.user || current_user.admin?) %>
+  <%= link_to "Edit", edit_product_path(@product.id) %>
+  <%= link_to "Delete", product_path(@product.id), method: :delete %>
+<% end %>
