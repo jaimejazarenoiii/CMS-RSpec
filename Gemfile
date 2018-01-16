@@ -30,6 +30,10 @@ group :production, :staging do
   gem "unicorn-worker-killer"
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+end
+
 group :development do
   gem "annotate", ">= 2.5.0"
   gem "awesome_print"
@@ -46,6 +50,7 @@ group :development do
   gem "guard", ">= 2.2.2", :require => false
   gem "guard-livereload", :require => false
   gem "guard-minitest", :require => false
+  gem 'guard-rspec', :require => false
   gem "letter_opener"
   gem "listen", ">= 3.0.5"
   gem "overcommit", ">= 0.37.0", :require => false
