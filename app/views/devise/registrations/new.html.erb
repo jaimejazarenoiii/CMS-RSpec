@@ -21,6 +21,31 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :mobile %><br />
+    <%= f.text_field :mobile %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fname %><br />
+    <%= f.text_field :fname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lname %><br />
+    <%= f.text_field :lname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthdate %><br />
+    <%= f.date_field :birthdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
