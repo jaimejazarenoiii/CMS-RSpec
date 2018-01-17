@@ -60,7 +60,7 @@ jobs:
             cp config/database.example.yml config/database.yml
             cp example.env .env
             bin/rails db:environment:set RAILS_ENV=test
-            bin/setup
+            bundle exec rake db:setup
 
       - run:
           name: Run tests
