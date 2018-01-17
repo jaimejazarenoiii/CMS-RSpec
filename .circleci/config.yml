@@ -15,6 +15,7 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: ""
+          POSTGRES_DB: cms_rspec_test
 
     working_directory: ~/repo
 

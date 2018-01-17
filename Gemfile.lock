@@ -293,6 +293,8 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
+    rspec_junit_formatter (0.3.0)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.52.1)
       parallel (~> 1.10)
       parser (>= 2.4.0.2, < 3.0)
@@ -423,7 +425,9 @@ DEPENDENCIES
   rails (= 5.1.4)
   rbnacl (~> 3.4)
   rbnacl-libsodium
+  rspec
   rspec-rails (~> 3.7)
+  rspec_junit_formatter
   rubocop (>= 0.50.0)
   sass-rails (~> 5.0)
   secure_headers (~> 3.0)
@@ -446,4 +450,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
