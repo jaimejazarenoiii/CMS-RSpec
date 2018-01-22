@@ -37,16 +37,15 @@ RSpec.describe Product, type: :model do
   }
 
   describe Product do
-    it "should belongs to user" do
-      relationship = Product.reflect_on_association(:user)
-      expect(relationship.macro).to eq(:belongs_to)
-    end
-  end
-
-  describe Product do
-    it "should belongs to category" do
-      relationship = Product.reflect_on_association(:category)
-      expect(relationship.macro).to eq(:belongs_to)
+    context "associations" do
+      it "should belongs to category" do
+        relationship = Product.reflect_on_association(:category)
+        expect(relationship.macro).to eq(:belongs_to)
+      end
+      it "should belongs to user" do
+        relationship = Product.reflect_on_association(:user)
+        expect(relationship.macro).to eq(:belongs_to)
+      end
     end
   end
 
