@@ -116,3 +116,6 @@ Style/BlockDelimiters:
     - subject
     - watch
     - expect
+
+Style/BracesAroundHashParameters:
+  Enabled: false
