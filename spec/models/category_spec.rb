@@ -17,8 +17,13 @@ RSpec.describe Category, type: :model do
     it { should_not be_valid }
   end
 
-  it "is not valid without a email" do
+  it "is not valid without category" do
     category = Category.new(name: nil)
     expect(category).to_not be_valid
+  end
+
+  it "is valid with category" do
+    category = Category.new(name: "Computer")
+    expect(category).to be_valid
   end
 end
