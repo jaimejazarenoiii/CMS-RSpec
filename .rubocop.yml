@@ -108,11 +108,14 @@ Style/TrivialAccessors:
   AllowPredicates: true
 
 Style/BlockDelimiters:
- EnforcedStyle: semantic
- FunctionalMethods:
-   - before
-   - let
-   - let!
-   - subject
-   - watch
-   - expect
+  EnforcedStyle: semantic
+  FunctionalMethods:
+    - before
+    - let
+    - let!
+    - subject
+    - watch
+    - expect
+
+Style/BracesAroundHashParameters:
+  Enabled: false
