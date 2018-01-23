@@ -1,46 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe ProductsController, type: :controller do
-  let(:category) {
-    Category.create!(
-      name: "asdasdas"
+  let(:u) { create(:user, avatar: i, role: "admin") }
+  let(:cat) { create(:category) }
+  let(:i) {
+    Rack::Test::UploadedFile.new(
+      Rails.root.join('spec', 'image', '1.png')
     )
   }
-
-  let(:user) {
-    User.create(
-      fname: "bago",
-      lname: "luma",
-      mobile: 123_456_789,
-      email: "sample@yahoo.com",
-      birthdate: "2018-01-07",
-      role: "admin",
-      password: "foobar",
-      avatar:
-      Rack::Test::UploadedFile.new(
-        Rails.root.join('spec', 'support', '1.png')
-      )
-    )
-  }
-
-  let(:product) {
-    Product.create!(
-      user_id: user.id,
-      name: "Cap",
-      description: "Black",
-      price: 90.75,
-      category_id: category.id,
-      image: Rack::Test::UploadedFile.new(
-        Rails.root.join('spec', 'support', '1.png')
-      )
-    )
-  }
-
-  let(:valid_session) { {} }
 
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    sign_in user
+    sign_in u
   end
 
   describe "GET #index" do
@@ -53,7 +24,7 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the specific product" do
-      product.save
+      product = create(:product, user_id: u.id, category_id: cat.id, image: i)
       get :show, { params: { id: product } }
       expect(product).to eq(Product.last)
     end
@@ -61,13 +32,13 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested product" do
-      product.save
+      product = create(:product, user_id: u.id, category_id: cat.id, image: i)
       expect {
         delete :destroy, { params: { id: product } }
       }.to change(Product, :count).by(-1)
     end
     it "redirects to products list" do
-      product.save
+      product = create(:product, user_id: u.id, category_id: cat.id, image: i)
       delete :destroy, { params: { id: product } }
       expect(response).to redirect_to(products_url)
     end
@@ -75,7 +46,7 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "POST #create" do
     it "creates a new Product" do
-      product.save
+      product = create(:product, user_id: u.id, category_id: cat.id, image: i)
       expect(product).to eq(Product.last)
     end
     it "doesnt create product with nil parameters" do

@@ -1,19 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let(:valid_attributes) {
-    {
-      fname: "bago",
-      lname: "luma",
-      mobile: 123_456_789,
-      email: "sample@yahoo.com",
-      birthdate: "2018-01-07",
-      password: "foobar",
-      avatar:
-      Rack::Test::UploadedFile.new(
-        Rails.root.join('spec', 'support', '1.png')
-      )
-    }
+  let(:image) {
+    Rack::Test::UploadedFile.new(
+      Rails.root.join('spec', 'image', '1.png')
+    )
   }
 
   before do
@@ -54,7 +45,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested user to edit" do
-      user = User.create! valid_attributes
+      user = create(:user, avatar: image)
       get :edit, { params: { id: user } }
       expect(user).to eq(User.last)
     end
@@ -62,7 +53,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "POST #create" do
     it "creates a new User" do
-      user = User.create! valid_attributes
+      user = create(:user, avatar: image)
       expect(user).to be_a(User)
       expect(user).to eq(User.last)
     end
@@ -74,7 +65,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #show" do
     it "get the specific user" do
-      user = User.create! valid_attributes
+      user = create(:user, avatar: image)
       get :show, { params: { id: user } }
       expect(assigns(:user)).to eq(user)
     end

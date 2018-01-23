@@ -10,9 +10,9 @@ RSpec.describe Category, type: :model do
 
   describe "when category name is already taken" do
     before do
-      @category = Category.new(name: "Appliances")
-      category = @category.dup
-      category.save
+      @category = create(:category)
+      cat = @category.dup
+      cat.save
     end
     it { should_not be_valid }
   end
@@ -23,7 +23,7 @@ RSpec.describe Category, type: :model do
   end
 
   it "is valid with category" do
-    category = Category.new(name: "Computer")
+    category = create(:category)
     expect(category).to be_valid
   end
 end

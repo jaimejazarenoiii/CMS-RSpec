@@ -1,39 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  let(:category) {
-    Category.create!(
-      name: "asdasdas"
+  let(:user) { create(:user, avatar: i) }
+  let(:cat) { create(:category) }
+  let(:i) {
+    Rack::Test::UploadedFile.new(
+      Rails.root.join('spec', 'image', '1.png')
     )
-  }
-
-  let(:user) {
-    User.create(
-      fname: "bago",
-      lname: "luma",
-      mobile: 123_456_789,
-      email: "sample@yahoo.com",
-      birthdate: "2018-01-07",
-      role: "admin",
-      password: "foobar",
-      avatar:
-      Rack::Test::UploadedFile.new(
-        Rails.root.join('spec', 'support', '1.png')
-      )
-    )
-  }
-
-  let(:valid_attributes) {
-    {
-      user_id: user.id,
-      name: "Cap",
-      description: "Black",
-      price: 90.75,
-      category_id: category.id,
-      image: Rack::Test::UploadedFile.new(
-        Rails.root.join('spec', 'support', '1.png')
-      )
-    }
   }
 
   describe Product do
@@ -50,8 +23,8 @@ RSpec.describe Product, type: :model do
   end
 
   it "is not valid with nil parameters" do
-    product = Product.new(name: nil, description: nil, image: nil)
-    expect(product).to_not be_valid
+    products = Product.new(name: nil, description: nil, image: nil)
+    expect(products).to_not be_valid
   end
 
   it "is not valid when price not integer" do
@@ -60,7 +33,7 @@ RSpec.describe Product, type: :model do
   end
 
   it "is valid with complete parameters" do
-    product = Product.new(valid_attributes)
+    product =  build(:product, user_id: user.id, category_id: cat.id, image: i)
     expect(product).to be_valid
   end
 end

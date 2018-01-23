@@ -1,25 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
-  let(:user) {
-    User.create(
-      fname: "bago",
-      lname: "luma",
-      mobile: 123_456_789,
-      email: "sample@yahoo.com",
-      birthdate: "2018-01-07",
-      role: "admin",
-      password: "foobar",
-      avatar:
-      Rack::Test::UploadedFile.new(
-        Rails.root.join('spec', 'support', '1.png')
-      )
-    )
-  }
-
-  let(:invalid) {
-    Category.create(
-      name: nil
+  let(:user) { create(:user, avatar: i, role: "admin") }
+  let(:i) {
+    Rack::Test::UploadedFile.new(
+      Rails.root.join('spec', 'image', '1.png')
     )
   }
 
