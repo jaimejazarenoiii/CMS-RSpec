@@ -11,21 +11,22 @@ gem "active_type", ">= 0.3.2"
 gem "autoprefixer-rails", ">= 5.0.0.1"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.1.0", :require => false
+gem 'carrierwave', '~> 1.0'
 gem "coffee-rails", "~> 4.2"
+gem 'devise'
 gem "dotenv-rails", ">= 2.0.0"
+gem 'foundation-rails'
 gem "jquery-rails"
 gem "mail", ">= 2.6.3"
 gem "marco-polo"
 gem "pg", "~> 0.18"
 gem "pgcli-rails"
 gem "rails", "5.1.4"
+gem 'rails-controller-testing'
 gem "sass-rails", "~> 5.0"
 gem "secure_headers", "~> 3.0"
 gem "sidekiq", ">= 4.2.0"
 gem "turbolinks", "~> 5"
-gem 'devise'
-gem 'carrierwave', '~> 1.0'
-gem 'foundation-rails'
 
 group :production, :staging do
   gem "postmark-rails"
@@ -34,6 +35,9 @@ group :production, :staging do
 end
 
 group :development, :test do
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'rspec-rails', '~> 3.7'
 end
 
@@ -61,11 +65,14 @@ group :development do
   gem "rack-livereload"
   gem "rbnacl", "~> 3.4", :require => false
   gem "rbnacl-libsodium", :require => false
+end
+
+group :development do
   gem "rubocop", ">= 0.50.0", :require => false
   gem "simplecov", :require => false
   gem "spring"
-  gem "sshkit", "~> 1.8", :require => false
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "sshkit", "~> 1.8", :require => false
   gem "terminal-notifier", :require => false
   gem "terminal-notifier-guard", :require => false
   gem "xray-rails", ">= 0.1.18"
@@ -76,9 +83,9 @@ group :test do
   gem "launchy"
   gem "minitest-ci", ">= 3.3.0", :require => false
   gem "mocha"
+  gem "rspec"
+  gem "rspec_junit_formatter"
   gem "selenium-webdriver"
   gem "shoulda-context"
   gem "shoulda-matchers", ">= 3.0.1"
-  gem "rspec"
-  gem "rspec_junit_formatter"
 end
