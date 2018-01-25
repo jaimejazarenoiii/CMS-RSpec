@@ -108,6 +108,7 @@ GEM
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     crass (1.0.3)
+    database_cleaner (1.6.2)
     debug_inspector (0.0.3)
     devise (4.4.0)
       bcrypt (~> 3.0)
@@ -410,6 +411,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
+  database_cleaner
   devise
   dotenv-rails (>= 2.0.0)
   factory_bot_rails

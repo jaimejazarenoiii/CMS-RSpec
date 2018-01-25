@@ -6,10 +6,9 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #index" do
-    it "populates an array of users" do
-      user = create(:user)
+    it "shows normal users" do
       get :index
-      expect(assigns(:users)).to eq([user])
+      assert_equal User.all.normal, assigns(:users)
     end
 
     it "renders the :index view" do

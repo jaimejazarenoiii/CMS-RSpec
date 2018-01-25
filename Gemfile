@@ -34,6 +34,7 @@ group :production, :staging do
 end
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7'

@@ -3,11 +3,12 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort("The Rails environment is in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'support/factory_bot'
 require 'devise'
 require 'support/controller_macros'
+require 'database_cleaner'
 require 'pry'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -36,6 +37,10 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
   config.use_transactional_fixtures = true
   config.include Devise::Test::ControllerHelpers, :type => :controller
   # Use the following instead if you are on Devise <= 4.1.0
