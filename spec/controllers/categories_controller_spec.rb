@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
-  let(:user) { create(:user, role: "admin") }
+  let(:admin) { create(:admin) }
   let(:category) { create(:category) }
 
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    sign_in user
+    sign_in admin
   end
 
   describe "GET #new" do
@@ -26,7 +26,7 @@ RSpec.describe CategoriesController, type: :controller do
 
       it "redirects to the new category" do
         post :create, params: { category: attributes_for(:category) }
-        expect(response).to redirect_to(Category.last)
+        expect(response).to redirect_to products_path
       end
     end
   end

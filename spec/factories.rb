@@ -5,13 +5,17 @@ FactoryBot.define do
     mobile '123456'
     email 'foobar@example.com'
     password 'password'
-    role 'normal'
+    role 0
     birthdate Time.zone.today
     avatar do
       Rack::Test::UploadedFile.new(Rails.root.join('spec',
                                                    'image',
                                                    'test-image.jpg'))
     end
+  end
+
+  factory :admin, parent: :user do
+    role 1
   end
 
   factory :category do
