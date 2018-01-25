@@ -26,6 +26,7 @@ gem "turbolinks", "~> 5"
 gem 'devise'
 gem 'carrierwave', '~> 1.0'
 gem 'foundation-rails'
+gem 'rails-controller-testing'
 
 group :production, :staging do
   gem "postmark-rails"
